@@ -1,106 +1,188 @@
-Pie Manager (PM) for Blender
-Pie Manager (PM) là một add-on mạnh mẽ dành cho Blender, cho phép người dùng tự tạo và quản lý các Pie Menus (menu dạng tròn) tùy chỉnh mà không cần biết lập trình.
+# 🥧 Pie Manager (PM) for Blender
 
-Phiên bản v3.0.7 mang đến khả năng kiểm soát ngữ cảnh tuyệt đối với Multi-select Filters (Bộ lọc đa chọn), giúp bạn tạo ra một phím tắt duy nhất nhưng hoạt động thông minh trong mọi chế độ (Object, Edit, Sculpt, Node Editor, v.v.).
+**Pie Manager (PM)** là một add-on mạnh mẽ dành cho **Blender**, cho phép người dùng **tạo, quản lý và tùy biến Pie Menus (menu dạng tròn)** một cách trực quan — **không cần biết lập trình**.
 
-✨ Tính năng nổi bật (Key Features)
-🎨 Giao diện trực quan: Tạo Pie Menu ngay trong Sidebar (N-Panel), không cần viết một dòng code nào.
+Phiên bản **v3.0.7** giới thiệu hệ thống **Multi-select Context Filters**, mang lại khả năng kiểm soát ngữ cảnh gần như tuyệt đối:  
+👉 **một phím tắt duy nhất**, nhưng hành vi thay đổi thông minh theo **Mode**, **Editor**, và **Context**.
 
-🧠 Context Sensitive (Nhạy ngữ cảnh):
+> *One hotkey. Infinite contexts.*
 
-Hiển thị các mục (items) khác nhau dựa trên chế độ làm việc (Object Mode, Edit Mode, Sculpt Mode...).
+---
 
-MỚI: Tách biệt bộ lọc cho Edit Mesh và Edit Armature.
+## ✨ Key Features
 
-Hỗ trợ bộ lọc theo Editor (3D View, Shader Editor, Geometry Node, Image Editor...).
+### 🎨 Visual Pie Menu Editor
+- Tạo và chỉnh sửa Pie Menu trực tiếp trong **Sidebar (N-Panel)**
+- Không cần viết code
+- Thao tác kéo – chọn – gán cực nhanh
 
-📚 Action Library (Thư viện hành động): Tích hợp sẵn hàng trăm lệnh thông dụng (Viewport, Selection, UV, Image...) để gán nhanh vào menu.
+---
 
-🖌️ Smart Sculpt Support: Hỗ trợ đầy đủ hệ thống Brush Asset mới của Blender 4.0+.
+### 🧠 Context Sensitive System (Nhạy ngữ cảnh)
+Pie Manager tự động hiển thị **đúng hành động – đúng thời điểm**:
 
-🐍 Python Scripting: Chạy các đoạn mã Python tùy chỉnh trực tiếp từ Pie Menu.
+- **Mode Filters**
+  - Object Mode
+  - Edit Mode  
+    - Mesh  
+    - Armature *(NEW)*
+  - Sculpt Mode
+  - Pose Mode
+  - …
 
-💾 Presets System: Lưu và chia sẻ cấu hình menu của bạn dưới dạng file JSON.
+- **Editor Filters**
+  - 3D View
+  - Shader Editor
+  - Geometry Nodes
+  - Image Editor
+  - Node Editors khác
 
-🖱️ Add from Context Menu: Thêm nhanh bất kỳ nút bấm nào vào Pie Manager chỉ bằng cách chuột phải -> Add to Pie Manager.
+➡️ Một Item có thể xuất hiện **chỉ khi**:
+> *Edit Mesh + 3D View + đúng Editor đang mở*
 
-🛠️ Cài đặt (Installation)
-Tải file .zip của add-on về máy.
+---
 
-Mở Blender, đi tới Edit > Preferences.
+### 📚 Action Library
+Thư viện hành động tích hợp sẵn với **hàng trăm lệnh phổ biến**:
 
-Chọn tab Add-ons và nhấn Install...
+- Viewport & Navigation
+- Selection
+- Mesh / UV
+- Image & Node
+- Utility Commands
 
-Chọn file .zip vừa tải.
+➡️ Gán hành động chỉ bằng **1 click**.
 
-Tích vào ô chọn để kích hoạt: 3D View: PM (PieManage).
+---
 
-🚀 Hướng dẫn sử dụng (Usage)
-Vị trí: View3D > Sidebar (Phím N) > Tab PM
+### 🖌️ Smart Sculpt Support
+- Hỗ trợ đầy đủ **Brush Asset System** của **Blender 4.0+**
+- Truy cập nhanh các Sculpt Brush:
+  - Draw
+  - Clay
+  - Snake Hook
+  - Inflate
+  - …
 
-1. Tạo một Pie Menu mới
-Trong bảng Pie Menus, nhấn nút (+).
+---
 
-Đặt tên cho Menu (ví dụ: "My Workflow").
+### 🐍 Python Scripting
+- Chạy **Python code tùy chỉnh** trực tiếp từ Pie Menu
+- Phù hợp cho:
+  - Technical Artist
+  - Tool Developer
+  - Pipeline customization
 
-Gán phím tắt (Hotkey), ví dụ: Q, Shift + A...
+---
 
-2. Thêm các mục (Items)
-Chọn Menu vừa tạo, nhấn (+) trong bảng Menu Items.
+### 💾 Preset System
+- Lưu cấu hình Pie Menu dưới dạng **JSON**
+- Import / Export dễ dàng
+- Chia sẻ workflow cho team hoặc cộng đồng
 
-Chọn loại lệnh (Command Type):
+---
 
-Operator: Gọi lệnh Blender (ví dụ: bpy.ops.mesh.subdivide()).
+### 🖱️ Add from Context Menu
+- Chuột phải vào **bất kỳ nút nào trong Blender**
+- Chọn **Add to Pie Manager**
+- Lệnh được thêm ngay vào menu hiện tại
 
-Sculpt Tool: Chọn nhanh các cọ điêu khắc (Draw, Clay, Snake Hook...).
+➡️ Workflow cực nhanh, đúng tinh thần Blender.
 
-Viewpoint: Chuyển góc nhìn (Top, Front, Right...).
+---
 
-Python Script: Chạy code Python tùy chỉnh.
+## 🛠️ Installation
 
-Menu: Gọi một Menu con khác.
+1. Tải file **`.zip`** của add-on
+2. Mở Blender → `Edit > Preferences`
+3. Chọn tab **Add-ons** → `Install...`
+4. Chọn file `.zip`
+5. Kích hoạt add-on:
 
-3. Sử dụng Bộ lọc ngữ cảnh (Context Filters) - Quan trọng
-Đây là tính năng mạnh nhất của PM v3.0.7. Bạn có thể cài đặt để một Item chỉ xuất hiện khi điều kiện đúng.
+3D View: PM (Pie Manager)
 
-Mở phần Item Settings.
 
-Mode Filters: Chọn các chế độ mà Item sẽ hiển thị (ví dụ: Chỉ hiện nút "Extrude" khi ở Edit Mesh).
+---
 
-Editor Filters: Chọn cửa sổ làm việc (ví dụ: Chỉ hiện nút "Add Node" khi ở Shader Editor).
+## 🚀 Usage Guide
 
-4. Sử dụng Action Library
-Mở panel Action Library.
+### 📍 Location
 
-Tìm kiếm hành động bạn cần (ví dụ: "Select All", "Snap Cursor").
+View3D > Sidebar (N) > PM
 
-Nhấn vào tên hành động để gán nó cho Item đang chọn.
 
-📦 Import / Export Presets
-Bạn có thể sao lưu các menu của mình hoặc chia sẻ cho người khác:
+---
 
-Save Preset: Lưu cấu hình hiện tại thành file JSON.
+### 1️⃣ Create a Pie Menu
+1. Trong panel **Pie Menus**, nhấn **( + )**
+2. Đặt tên (ví dụ: `My Workflow`)
+3. Gán **Hotkey** (Q, Shift + A, …)
 
-Load Preset: Nạp cấu hình từ file đã lưu.
+---
 
-Dữ liệu được lưu tại thư mục config của người dùng: .../config/menu_editor_presets/
+### 2️⃣ Add Menu Items
+Trong menu vừa tạo, nhấn **( + )** ở bảng Menu Items.
 
-🤝 Đóng góp (Credits)
-Author: HauNguyen
+**Supported Item Types**
+- **Operator** — Gọi Blender operator  
+  `bpy.ops.mesh.subdivide()`
+- **Sculpt Tool** — Chọn Brush
+- **Viewpoint** — Top / Front / Right…
+- **Python Script** — Chạy code tùy chỉnh
+- **Menu** — Gọi Pie Menu con
 
-Phiên bản: 3.0.7
+---
 
-Category: 3D View
+### 3️⃣ Context Filters (Core Feature)
+Thiết lập để Item chỉ xuất hiện khi điều kiện phù hợp.
 
-Add-on này được phát triển để tối ưu hóa quy trình làm việc trong Blender 4.0 trở lên.
+- **Mode Filters**
+  - Ví dụ: chỉ hiện *Extrude* khi **Edit Mesh**
+- **Editor Filters**
+  - Ví dụ: chỉ hiện *Add Node* trong **Shader Editor**
 
-Một số lưu ý về file code (Dành cho Developer/Bạn):
-Nếu bạn muốn chỉnh sửa thêm, cấu trúc code hiện tại như sau:
+➡️ Đây là trái tim của **PM v3.0.7**.
 
-__init__.py: Khởi tạo và đăng ký add-on.
+---
 
-core.py: Xử lý đăng ký phím tắt động (Dynamic Keymaps).
+### 4️⃣ Action Library
+1. Mở panel **Action Library**
+2. Tìm hành động (ví dụ: `Select All`, `Snap Cursor`)
+3. Click để gán cho Item đang chọn
 
-storage.py: Xử lý lưu/tải dữ liệu JSON và logic lọc ngữ cảnh (Filter Logic).
+---
 
-action_library.py: Chứa dữ liệu các lệnh có sẵn.
+## 📦 Preset Import / Export
+
+- **Save Preset** — Xuất cấu hình hiện tại ra JSON
+- **Load Preset** — Nạp preset đã lưu
+
+📂 Preset location:
+
+
+.../config/menu_editor_presets/
+
+
+---
+
+## 🧩 Code Structure (For Developers)
+
+
+init.py # Add-on initialization & registration
+core.py # Dynamic keymap system
+storage.py # JSON storage & context filter logic
+action_library.py # Built-in action definitions
+
+
+Thiết kế module rõ ràng, dễ mở rộng và bảo trì.
+
+---
+
+## 🤝 Credits
+
+- **Author:** Hau Nguyen  
+- **Version:** 3.0.7  
+- **Category:** 3D View  
+
+Add-on được phát triển nhằm tối ưu hóa workflow cho **Blender 4.0+**  
+với trọng tâm là **tốc độ – ngữ cảnh – khả năng mở rộng**.
