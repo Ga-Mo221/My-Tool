@@ -1,97 +1,140 @@
-# Blender Editor Tools for Unity
+# 🎨 Blender Editor Tools for Unity
 
-**Blender Editor Tools** là một gói tiện ích mở rộng (Unity Package) giúp mang trải nghiệm, phím tắt và quy trình làm việc (workflow) quen thuộc của **Blender** vào trong **Unity Editor**.
+**Blender Editor Tools** là một **Unity Editor Extension** mang triết lý thao tác, phím tắt và workflow quen thuộc của **Blender** vào thẳng **Unity Editor**.
 
-Công cụ này cực kỳ hữu ích cho các Artist/Developer đã quen với Blender và muốn tăng tốc độ thao tác trong Scene View cũng như tối ưu hóa giao diện Inspector.
+Package này được sinh ra cho những ai:
+- Đã quen Blender và không muốn “đổi não” khi sang Unity  
+- Muốn thao tác Scene View nhanh, chính xác, ít click  
+- Muốn một Inspector gọn gàng, tập trung, không bừa bộn Component  
 
-## ✨ Tính năng nổi bật (Key Features)
-
-### 1. ⌨️ Blender Transform Hotkeys (G, R, S)
-Thao tác với đối tượng (Move, Rotate, Scale) nhanh chóng như trong Blender ngay tại Scene View:
-* **G:** Grab/Move (Di chuyển).
-* **R:** Rotate (Xoay).
-* **S:** Scale (Phóng to/Thu nhỏ).
-* **Khóa trục (Axis Locking):** Nhấn **X, Y, Z** trong khi thao tác để khóa theo trục tương ứng.
-* **Khóa mặt phẳng (Plane Locking):** Nhấn **Shift + X/Y/Z** để di chuyển trên mặt phẳng (loại trừ trục đó).
-* **HUD thông minh:** Hiển thị thông số khoảng cách/góc xoay trực quan ngay trên màn hình khi thao tác.
-* **Xác nhận/Hủy:** Chuột trái để xác nhận, Chuột phải (hoặc Esc) để hủy bỏ.
-
-### 2. 🖱️ Blender Scene Navigation
-Điều hướng Camera trong Scene View giống hệt Blender (không cần giữ phím Alt):
-* **Chuột giữa (MMB):** Xoay camera (Orbit).
-* **Shift + MMB:** Trượt camera (Pan).
-* **Scroll:** Phóng to/Thu nhỏ (Zoom).
-
-### 3. 📑 Tabbed Inspector (Giao diện Inspector dạng Tab)
-Thay đổi hoàn toàn cách hiển thị của Inspector mặc định giúp quản lý Component dễ dàng hơn:
-* **Grid Layout:** Các Component được hiển thị dưới dạng icon/tab gọn gàng thay vì danh sách dọc dài.
-* **Focus Mode:** Chỉ hiển thị nội dung của Component đang được chọn.
-* **Custom Context Menu:** Menu chuột phải được thiết kế lại (Reset, Copy, Paste Values, Remove...).
-* **Smart Add Component:** Cửa sổ thêm Component mới được làm lại, hỗ trợ tìm kiếm và phân loại trực quan.
-
-### 4. ⚙️ Tùy chỉnh (Preferences)
-Bạn có thể bật/tắt từng tính năng riêng biệt trong **Edit > Preferences > Blender Editor**:
-* Enable/Disable Tab Inspector.
-* Enable/Disable Transform Hotkeys.
-* Enable/Disable Scene Navigation.
+> *Think in Blender. Build in Unity.*
 
 ---
 
-## 📦 Dependencies & Third-party
+## ✨ Key Features
 
-Package này đã tích hợp sẵn thư viện **NaughtyAttributes** để hỗ trợ mở rộng giao diện Inspector cho các script.
+### ⌨️ Blender-style Transform Hotkeys (G / R / S)
+Thao tác Transform giống Blender **1:1** ngay trong Scene View:
 
-| Package | Version | Author | License / Link |
-| :--- | :--- | :--- | :--- |
-| **NaughtyAttributes** | 2.1.4 | Denis Rizov | [GitHub Repo](https://github.com/dbrizov/NaughtyAttributes) |
+- **G** — Grab / Move  
+- **R** — Rotate  
+- **S** — Scale  
 
-> *NaughtyAttributes is an extension for the Unity Inspector.*
+**Axis & Plane Locking**
+- **X / Y / Z** — Khóa trục
+- **Shift + X/Y/Z** — Khóa mặt phẳng (loại trừ trục)
 
----
+**Smart HUD**
+- Hiển thị **khoảng cách / góc xoay / scale** trực quan khi thao tác
 
-## 🛠️ Cài đặt (Installation)
-
-1.  Tải file `.unitypackage` từ mục **Releases** của repository này.
-2.  Mở project Unity của bạn.
-3.  Kéo thả file `.unitypackage` vào cửa sổ Project (hoặc chọn **Assets > Import Package > Custom Package...**).
-4.  Nhấn **Import** để cài đặt toàn bộ assets.
-
-## 🚀 Hướng dẫn sử dụng (Usage Guide)
-
-### Phím tắt Transform (Khi đang chọn GameObject)
-
-| Phím | Hành động | Mô tả |
-| :--- | :--- | :--- |
-| **G** | Move | Bắt đầu di chuyển đối tượng |
-| **R** | Rotate | Bắt đầu xoay đối tượng |
-| **S** | Scale | Bắt đầu thay đổi kích thước |
-| **X / Y / Z** | Axis Lock | Khóa trục X, Y hoặc Z (khi đang Move/Rotate/Scale) |
-| **Shift + X/Y/Z** | Plane Lock | Khóa mặt phẳng (ví dụ: Shift+Z để trượt trên mặt đất XY) |
-| **Click Trái** | Confirm | Xác nhận thay đổi |
-| **Click Phải / Esc** | Cancel | Hủy bỏ thay đổi (trở về trạng thái cũ) |
-
-### Giao diện Inspector mới
-1.  Chọn một GameObject bất kỳ.
-2.  Nhìn vào cửa sổ Inspector, bạn sẽ thấy hàng loạt Icon ở trên cùng.
-3.  Bấm vào từng Icon để xem chi tiết Component đó.
-4.  Bấm nút **(+) Add** màu xanh để mở bảng tìm kiếm Component nhanh.
+**Confirm / Cancel**
+- **Left Click** — Xác nhận
+- **Right Click / Esc** — Hủy (rollback về trạng thái cũ)
 
 ---
 
-## 🤝 Đóng góp (Credits)
+### 🖱️ Blender Scene View Navigation
+Điều hướng Scene View theo phong cách Blender, **không cần giữ Alt**:
 
-* **Core Logic:** Developed by GaMo.
-* **Inspector Extensions:** Powered by NaughtyAttributes (Denis Rizov).
+| Input | Action |
+|------|-------|
+| **MMB** | Orbit |
+| **Shift + MMB** | Pan |
+| **Scroll** | Zoom |
+
+Cảm giác camera mượt, đúng “chất Blender”, đặc biệt hữu ích cho Artist.
 
 ---
 
-### Cấu trúc thư mục (Folder Structure)
-Assets/ 
-└── Plugins/ 
-    └── BlenderEditorTools/ 
-    ├── Editor/ # Mã nguồn chính (C#) 
-    │     ├── BlenderTransformSession.cs 
-    │     ├── BlenderSceneViewNavigation.cs 
-    │     ├── GameObjectGridInspector.cs 
-    │     └── ... 
-    └── NaughtyAttributes/ # Thư viện đi kèm
+### 📑 Tabbed Inspector (Inspector dạng Tab / Grid)
+Thay thế hoàn toàn Inspector mặc định của Unity:
+
+- **Grid / Tab Layout**  
+  Component hiển thị dưới dạng icon, không còn danh sách dọc dài vô tận.
+
+- **Focus Mode**  
+  Chỉ hiển thị Component đang làm việc → ít nhiễu, tập trung cao.
+
+- **Custom Context Menu**  
+  Chuột phải: Reset, Copy, Paste Values, Remove… thiết kế lại gọn gàng.
+
+- **Smart Add Component**  
+  Cửa sổ Add Component mới:
+  - Tìm kiếm nhanh
+  - Phân loại rõ ràng
+  - Trực quan, dễ dùng
+
+---
+
+### ⚙️ Preferences & Customization
+Tất cả tính năng có thể bật/tắt trong:
+
+**`Edit > Preferences > Blender Editor Tools`**
+
+- Enable / Disable:
+  - Tabbed Inspector
+  - Transform Hotkeys
+  - Scene Navigation
+
+Thiết kế theo triết lý: *không ép workflow – chỉ hỗ trợ*.
+
+---
+
+## 📦 Dependencies
+
+Package đã tích hợp sẵn thư viện bên thứ ba:
+
+| Package | Version | Author | Link |
+|------|------|------|------|
+| **NaughtyAttributes** | 2.1.4 | Denis Rizov | https://github.com/dbrizov/NaughtyAttributes |
+
+> NaughtyAttributes giúp mở rộng Inspector một cách gọn gàng và mạnh mẽ.
+
+---
+
+## 🛠️ Installation
+
+1. Tải file **`.unitypackage`** từ mục **Releases**
+2. Mở project Unity
+3. Import bằng một trong hai cách:
+   - Kéo thả trực tiếp vào cửa sổ Project  
+   - `Assets > Import Package > Custom Package...`
+4. Nhấn **Import**
+
+✅ Không cần setup thêm.
+
+---
+
+## 🚀 Usage Guide
+
+### Transform Hotkeys
+
+| Key | Action | Description |
+|----|------|------------|
+| **G** | Move | Di chuyển đối tượng |
+| **R** | Rotate | Xoay đối tượng |
+| **S** | Scale | Thay đổi kích thước |
+| **X / Y / Z** | Axis Lock | Khóa trục |
+| **Shift + X/Y/Z** | Plane Lock | Khóa mặt phẳng |
+| **Left Click** | Confirm | Áp dụng |
+| **Right Click / Esc** | Cancel | Hủy bỏ |
+
+---
+
+### Tabbed Inspector Workflow
+1. Chọn một **GameObject**
+2. Inspector hiển thị **Icon Tabs** phía trên
+3. Click icon để focus vào Component
+4. Nhấn **➕ Add** để thêm Component nhanh
+
+---
+
+## 🤝 Credits
+
+- **Core Development:** GaMo  
+- **Inspector Extensions:** Denis Rizov (NaughtyAttributes)
+
+---
+
+## 📜 License
+MIT License — free to use, modify, and integrate into your workflow.
