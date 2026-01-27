@@ -49,7 +49,7 @@ Phù hợp cho:
 * Preset JSON – dễ chia sẻ workflow
 
 👉 **Xem chi tiết:**
-📄 [`Pie_Manager_For_Blender.md`](./Pie_Manager_For_Blender.md)
+📄 [`Pie_Manager(PM)_for_Blender.md`](./Pie_Manager(PM)_for_Blender.md)
 
 ---
 
