@@ -26,7 +26,7 @@ Phù hợp cho:
 * Workflow hỗ trợ, không ép buộc
 
 👉 **Xem chi tiết:**
-📄 [`Blender_Editor_Tools.md`](./Blender_Editor_Tools.md)
+📄 [`Blender_Editor_Tools.md`](./Blender Editor Tools for Unity.md)
 
 ---
 
