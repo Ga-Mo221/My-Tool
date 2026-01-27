@@ -72,8 +72,8 @@ Chỉ giúp workflow bạn **chạy nhanh hơn**.
 ```
 /
 ├─ README.md                     # File điều hướng tổng
-├─ Blender_Editor_Tools.md       # Chi tiết Unity tool
-└─ Pie_Manager_For_Blender.md    # Chi tiết Blender add-on
+├─ Blender_Editor_Tools_for_Unity.md       # Chi tiết Unity tool
+└─ Pie_Manager(PM)_for_Blender.md    # Chi tiết Blender add-on
 ```
 
 ---
