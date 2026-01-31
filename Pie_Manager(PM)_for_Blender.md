@@ -385,41 +385,111 @@ Capture bất kỳ Blender command nào một cách trực quan.
 
 ## 📦 Installation
 
-### Requirements
+### 📥 Download Release
+
+**Current Version: v3.0.7**
+
+```
+📦 Release: Pie Manager v3.0.7
+🔗 Link: [Download from GitHub Releases](../../releases/tag/v3.0.7)
+📄 File: PieManager-v3.0.7.zip
+💾 Size: ~500 KB
+🎯 Blender: 4.0+
+```
+
+**Quick Download:**
+1. Visit [Releases Page](../../releases/tag/v3.0.7)
+2. Download `PieManager-v3.0.7.zip`
+3. **Do NOT unzip** the file
+4. Follow installation steps below
+
+---
+
+### 🔧 Installation Steps
+
+#### Requirements
 
 - **Blender Version:** 4.0 or higher
 - **Python:** 3.10+ (built-in with Blender)
 - **OS:** Windows, macOS, Linux
 
-### Step-by-Step Installation
+---
+
+#### Step-by-Step Installation
 
 **1. Download Add-on**
 ```
-Download pie_manager_v3.0.7.zip from Releases
-Do NOT unzip the file
+✓ Go to: https://github.com/[your-repo]/releases/tag/v3.0.7
+✓ Download: PieManager-v3.0.7.zip
+✓ Important: Keep the .zip file as-is (DO NOT extract!)
 ```
 
-**2. Install in Blender**
+**2. Open Blender Preferences**
 ```
 Blender
 └─ Edit
-   └─ Preferences
-      └─ Add-ons
-         └─ Install...
-            └─ Select pie_manager_v3.0.7.zip
+   └─ Preferences (or Ctrl+Alt+U)
+      └─ Add-ons tab
 ```
 
-**3. Enable Add-on**
+**3. Install Add-on**
 ```
-Search: "PM" or "Pie Manager"
-Check: ☑ 3D View: PM (Pie Manager)
+In Add-ons tab:
+1. Click "Install..." button (top right)
+2. Navigate to downloaded PieManager-v3.0.7.zip
+3. Select file and click "Install Add-on"
+4. Wait for installation to complete
 ```
 
-**4. Verify Installation**
+**4. Enable Add-on**
 ```
-3D View → Sidebar (N) → PM tab
-Should see Pie Manager panel
+In Add-ons list:
+1. Search bar: Type "PM" or "Pie Manager"
+2. Find: "3D View: PM (Pie Manager)"
+3. Check the checkbox: ☑ to enable
+4. Add-on is now active!
 ```
+
+**5. Verify Installation**
+```
+Check these locations:
+├─ 3D View → Sidebar (press N)
+│  └─ Should see "PM" tab
+│
+└─ Preferences → Add-ons
+   └─ PM (Pie Manager) is enabled with ☑
+```
+
+---
+
+### ✅ Quick Verification Test
+
+**Test 1: Panel Visibility**
+```
+1. Open 3D View
+2. Press N (toggle sidebar)
+3. Look for "PM" tab
+4. Click it → Should see Pie Manager panel
+```
+
+**Test 2: Create Test Menu**
+```
+1. In PM panel, click [+ New Pie Menu]
+2. Name: "Test Menu"
+3. Hotkey: Q
+4. Click Create
+5. Menu should appear in list
+```
+
+**Test 3: Test Hotkey**
+```
+1. Click in 3D View
+2. Press Q
+3. Should see "Test Menu" pie (empty for now)
+4. Press ESC to close
+```
+
+If all tests pass → **Installation successful!** ✅
 
 ---
 
@@ -859,8 +929,14 @@ copies of the Software.
 
 <div align="center">
 
-**[← Back to Main](./README.md)** | **[Unity Tool →](./Blender_Editor_Tools_for_Unity.md)** | **[VSCode Extension →](./Code_Snippets_Manager.md)**
+### 📚 Navigation
+
+**[🏠 Main README](./README.md)** | **[📥 Download Guide](./DOWNLOAD_GUIDE.md)** | **[🎮 Unity Tools](./Blender_Editor_Tools_for_Unity.md)** | **[📝 Code Snippets](./Code_Snippets_Manager.md)**
+
+---
 
 Made with ❤️ for the Blender community
+
+⭐ If this add-on improved your workflow, please star the repo!
 
 </div>
