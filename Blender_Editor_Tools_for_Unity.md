@@ -191,16 +191,67 @@ Cửa sổ Add Component mới với:
 
 ## 📦 Installation
 
-### Method 1: Unity Package Manager (Recommended)
+### 📥 Available Releases
 
-```bash
-# Coming soon - Package will be available on Unity Asset Store
+Tool này có **2 releases** riêng biệt trên GitHub:
+
+#### 1. Unity SetUp (v1.0.1) - Recommended for Fresh Projects
+
+**Bao gồm:**
+- ✅ Unity Editor Extensions
+- ✅ NaughtyAttributes (pre-integrated)
+- ✅ Complete package ready to use
+
+**Download:**
+```
+📦 Release: Unity SetUp v1.0.1
+🔗 Link: [Download from Releases](../../releases/tag/v1.0.1)
+📄 File: UnitySetUp.unitypackage
+💾 Size: ~7 MB
 ```
 
-### Method 2: Manual Installation
+**Khi nào dùng:**
+- ✓ New project setup
+- ✓ Muốn đầy đủ dependencies
+- ✓ Không có NaughtyAttributes sẵn
+
+---
+
+#### 2. Blender Style Workflow (v1.0.2) - Lightweight Option
+
+**Bao gồm:**
+- ✅ Blender-style Transform Hotkeys
+- ✅ Scene View Navigation
+- ✅ Tabbed Inspector
+- ⚠️ Không bao gồm NaughtyAttributes (cần install riêng)
+
+**Download:**
+```
+📦 Release: Blender Style Workflow v1.0.2
+🔗 Link: [Download from Releases](../../releases/tag/v1.0.2)
+📄 File: BlenderStyleWorkflow.unitypackage
+💾 Size: ~3 MB
+```
+
+**Khi nào dùng:**
+- ✓ Đã có NaughtyAttributes trong project
+- ✓ Chỉ cần workflow features
+- ✓ Project size optimization
+
+---
+
+### 🔧 Installation Steps
+
+#### Method 1: Full Setup (Recommended)
+
+**Using Unity SetUp v1.0.1:**
 
 1. **Download Package**
-   - Tải file `.unitypackage` từ [Releases](../../releases)
+   ```
+   1. Truy cập: https://github.com/[your-repo]/releases/tag/v1.0.1
+   2. Download: UnitySetUp.unitypackage
+   3. Save to desktop or Downloads folder
+   ```
 
 2. **Import vào Unity**
    ```
@@ -208,20 +259,106 @@ Cửa sổ Add Component mới với:
    └─ Assets
       └─ Import Package
          └─ Custom Package...
-            └─ Chọn file .unitypackage
+            └─ Select UnitySetUp.unitypackage
+            └─ Click "Import All"
    ```
 
-3. **Import All**
-   - Nhấn **Import** để cài đặt tất cả files
+3. **Verify Installation**
+   ```
+   ✓ Check: Edit > Preferences > Blender Editor Tools
+   ✓ Test: Press G/R/S in Scene View
+   ✓ Verify: Inspector shows Tab icons
+   ```
 
-### Verification
+---
 
-Sau khi import, kiểm tra:
+#### Method 2: Workflow Only
 
+**Using Blender Style Workflow v1.0.2:**
+
+1. **Install NaughtyAttributes First**
+   ```
+   Option A: Unity Package Manager
+   - Add from git URL: https://github.com/dbrizov/NaughtyAttributes.git#upm
+   
+   Option B: Manual Download
+   - Download from: https://github.com/dbrizov/NaughtyAttributes
+   - Import .unitypackage
+   ```
+
+2. **Download Workflow Package**
+   ```
+   1. Truy cập: https://github.com/[your-repo]/releases/tag/v1.0.2
+   2. Download: BlenderStyleWorkflow.unitypackage
+   ```
+
+3. **Import vào Unity**
+   ```
+   Unity Editor
+   └─ Assets
+      └─ Import Package
+         └─ Custom Package...
+            └─ Select BlenderStyleWorkflow.unitypackage
+   ```
+
+---
+
+### ✅ Post-Installation Checklist
+
+Sau khi import xong, kiểm tra các items sau:
+
+**1. Preferences Menu**
 ```
-✓ Menu: Edit > Preferences > Blender Editor Tools
-✓ Scene View: Thử phím G/R/S
-✓ Inspector: Thấy Tab icons phía trên
+Edit > Preferences > Blender Editor Tools
+Should show:
+├─ ☑ Enable Transform Hotkeys
+├─ ☑ Enable Scene Navigation  
+└─ ☑ Enable Tabbed Inspector
+```
+
+**2. Scene View Hotkeys**
+```
+Select any GameObject
+Press G → Should enter Move mode
+Press R → Should enter Rotate mode
+Press S → Should enter Scale mode
+```
+
+**3. Inspector Tabs**
+```
+Select GameObject with multiple components
+Inspector should show:
+└─ Tab icons at top
+└─ Click icon to focus component
+```
+
+**4. Scene Navigation**
+```
+In Scene View:
+├─ MMB → Orbit camera
+├─ Shift+MMB → Pan camera
+└─ Scroll → Zoom
+```
+
+---
+
+### 🆚 Which Version Should I Choose?
+
+| Feature | Unity SetUp v1.0.1 | Blender Style Workflow v1.0.2 |
+|---------|-------------------|-------------------------------|
+| **Transform Hotkeys** | ✅ | ✅ |
+| **Scene Navigation** | ✅ | ✅ |
+| **Tabbed Inspector** | ✅ | ✅ |
+| **NaughtyAttributes** | ✅ Included | ❌ Install separately |
+| **File Size** | ~7 MB | ~3 MB |
+| **Dependencies** | None | Requires NaughtyAttributes |
+| **Best For** | New projects | Existing projects |
+
+**Recommendation:**
+```
+🎯 New Unity Project → Use Unity SetUp v1.0.1
+🎯 Has NaughtyAttributes → Use Blender Style Workflow v1.0.2
+🎯 Not sure → Use Unity SetUp v1.0.1 (safer option)
 ```
 
 ---
@@ -526,8 +663,14 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 <div align="center">
 
-**[← Back to Main](./README.md)** | **[Blender Add-on →](./Pie_Manager_PM__for_Blender.md)** | **[VSCode Extension →](./Code_Snippets_Manager.md)**
+### 📚 Navigation
 
-Made with ❤️ for Unity Artists
+**[🏠 Main README](./README.md)** | **[📥 Download Guide](./DOWNLOAD_GUIDE.md)** | **[🥧 Pie Manager](./Pie_Manager_PM__for_Blender.md)** | **[📝 Code Snippets](./Code_Snippets_Manager.md)**
+
+---
+
+Made with ❤️ for Unity Artists who love Blender
+
+⭐ If this tool helped you, consider giving it a star!
 
 </div>
