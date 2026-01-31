@@ -284,43 +284,255 @@ public async Task<string> MyFunction()
 
 ## 📦 Installation
 
-### Method 1: VSCode Marketplace (Recommended)
+### 📥 Download Release
+
+**Current Version: v1.0**
 
 ```
+📦 Release: Code Snippet Manager v1.0
+🔗 Link: [Download from GitHub Releases](../../releases/tag/v1.0)
+📄 File: codesnippetmanager-0.0.1.vsix
+💾 Size: ~7 MB
+🎯 VSCode: 1.80+
+```
+
+**Quick Download:**
+1. Visit [Releases Page](../../releases/tag/v1.0)
+2. Download `codesnippetmanager-0.0.1.vsix`
+3. Follow installation method below
+
+---
+
+### 🔧 Installation Methods
+
+#### Method 1: Direct Install from .vsix (Recommended)
+
+**Step-by-Step:**
+
+**1. Download Extension**
+```
+✓ Go to: https://github.com/[your-repo]/releases/tag/v1.0
+✓ Download: codesnippetmanager-0.0.1.vsix
+✓ Save to a memorable location (e.g., Downloads)
+```
+
+**2. Install via VSCode UI**
+```
+VSCode
+└─ Extensions view (Ctrl+Shift+X)
+   └─ Click ⋯ (More Actions) at top
+      └─ "Install from VSIX..."
+         └─ Select codesnippetmanager-0.0.1.vsix
+         └─ Click "Install"
+```
+
+**3. Reload VSCode**
+```
+After installation:
+└─ Click "Reload" button in notification
+   Or manually: Ctrl+Shift+P → "Reload Window"
+```
+
+**4. Verify Installation**
+```
+Check:
+├─ Extensions view → "Code Snippets Manager" shows as installed
+├─ Activity Bar → New Snippets icon appears (📚)
+└─ View → Snippets sidebar panel visible
+```
+
+---
+
+#### Method 2: Command Line Install
+
+**For Advanced Users:**
+
+```bash
+# Navigate to Downloads folder
+cd ~/Downloads
+
+# Install extension
+code --install-extension codesnippetmanager-0.0.1.vsix
+
+# Verify installation
+code --list-extensions | grep snippets
+```
+
+**Expected Output:**
+```
+✓ Extension installed successfully
+✓ codesnippetmanager.code-snippets-manager@0.0.1
+```
+
+---
+
+#### Method 3: VSCode Marketplace (Coming Soon)
+
+```
+🚧 Currently in review
+📅 Expected: Q2 2024
+
+When available:
 1. Open VSCode
 2. Press Ctrl+Shift+X (Extensions)
 3. Search "Code Snippets Manager"
-4. Click Install
-5. Reload VSCode
+4. Click "Install"
 ```
 
-### Method 2: Manual Installation (.vsix)
+---
 
-```bash
-# Download .vsix file from Releases
+### ✅ Post-Installation Setup
 
-# Install via command line
-code --install-extension snippets-manager-2.1.0.vsix
+#### 1. Open Snippets Panel
 
-# Or via VSCode
-# Extensions → ⋯ → Install from VSIX...
+**Via Activity Bar:**
+```
+Look for 📚 icon in left sidebar
+Click it → Snippets panel opens
 ```
 
-### Method 3: Build from Source
+**Via Command Palette:**
+```
+1. Press Ctrl+Shift+P
+2. Type "Snippets: Show Sidebar"
+3. Press Enter
+```
+
+**Via Menu:**
+```
+View → Snippets
+```
+
+---
+
+#### 2. Configure Settings (Optional)
+
+**Open Settings:**
+```
+File → Preferences → Settings
+Search: "Snippets Manager"
+```
+
+**Available Settings:**
+```
+┌─────────────────────────────────────┐
+│ Code Snippets Manager Settings      │
+├─────────────────────────────────────┤
+│ Default Language: [JavaScript ▼]    │
+│ Auto-sync: [✓] Enabled              │
+│ Editor Theme: [● Dark  ○ Light]     │
+│ Show Line Numbers: [✓] Enabled      │
+│ Auto-import on startup: [ ] Disabled│
+└─────────────────────────────────────┘
+```
+
+---
+
+#### 3. Import Sample Snippets (Optional)
+
+**Get started with examples:**
+```
+1. In Snippets panel, click gear icon ⚙️
+2. Select "Import Sample Snippets"
+3. Choose language:
+   ├─ JavaScript samples
+   ├─ Python samples
+   └─ C# samples
+4. Click "Import"
+5. Samples appear in your library
+```
+
+---
+
+### 🔍 Verify Installation
+
+Run these checks to ensure everything works:
+
+**✓ Check 1: Extension Active**
+```
+Extensions view (Ctrl+Shift+X)
+└─ Search "Code Snippets Manager"
+   └─ Should show "Installed" status
+   └─ Green checkmark visible
+```
+
+**✓ Check 2: Sidebar Accessible**
+```
+Activity Bar
+└─ Click 📚 Snippets icon
+   └─ Panel opens with "My Code Snippets" header
+   └─ [+ New Snippet] button visible
+```
+
+**✓ Check 3: Create Test Snippet**
+```
+1. Click [+ New Snippet]
+2. Name: "Test Snippet"
+3. Language: JavaScript
+4. Add code block with: console.log('Hello');
+5. Click [💾 Save]
+6. Should appear in sidebar with JS color (yellow border)
+```
+
+**✓ Check 4: Export/Import Works**
+```
+1. Click export button (⬇️)
+2. Save test-snippets.json
+3. Delete test snippet
+4. Click import button (⬆️)
+5. Select test-snippets.json
+6. Snippet should restore
+```
+
+---
+
+### 🆚 Installation Comparison
+
+| Method | Difficulty | Speed | Best For |
+|--------|-----------|-------|----------|
+| **.vsix Install** | ⭐ Easy | Fast | Most users |
+| **Command Line** | ⭐⭐ Medium | Fastest | Developers |
+| **Marketplace** | ⭐ Easiest | Fast | When available |
+
+**Recommendation:**
+```
+🎯 Most Users → Use .vsix install (Method 1)
+🎯 Developers → Use command line (Method 2)
+🎯 Future → Use Marketplace when available
+```
+
+---
+
+### 🛠️ Manual Build (For Developers)
+
+**Build from source:**
 
 ```bash
-# Clone repository
+# 1. Clone repository
 git clone [repo-url]
 cd vscode-snippets-manager
 
-# Install dependencies
+# 2. Install dependencies
 npm install
 
-# Compile TypeScript
+# 3. Compile TypeScript
 npm run compile
 
-# Run in development
-# Press F5 in VSCode
+# 4. Package extension
+npm run package
+# Creates: codesnippetmanager-0.0.1.vsix
+
+# 5. Install locally
+code --install-extension codesnippetmanager-0.0.1.vsix
+```
+
+**Development Mode:**
+```bash
+# Watch mode for development
+npm run watch
+
+# Run in Extension Development Host
+# In VSCode: Press F5
 ```
 
 ---
@@ -805,8 +1017,14 @@ See [LICENSE](LICENSE) for full text.
 
 <div align="center">
 
-**[← Back to Main](./README.md)** | **[Unity Tool →](./Blender_Editor_Tools_for_Unity.md)** | **[Blender Add-on →](./Pie_Manager_PM__for_Blender.md)**
+### 📚 Navigation
+
+**[🏠 Main README](./README.md)** | **[📥 Download Guide](./DOWNLOAD_GUIDE.md)** | **[🎮 Unity Tools](./Blender_Editor_Tools_for_Unity.md)** | **[🥧 Pie Manager](./Pie_Manager_PM__for_Blender.md)**
+
+---
 
 Made with ❤️ for developers worldwide
+
+⭐ Star this repo if Code Snippets Manager saves you time!
 
 </div>
