@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GaMo Tools — Bộ công cụ cho Unity</title>
+<meta name="description" content="True Input System: một API input cho PC, tay cầm và mobile. Blender-Style Workflow: thao tác kiểu Blender, constraint, Dynamic Bone và GM-Inspector ngay trong Unity.">
+<meta name="theme-color" content="#232323">
+<link rel="icon" href="assets/icons/GamepadButton.png">
+<link rel="preload" href="assets/fonts/BeVietnamPro-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">G</span>GaMo Tools</a>
+    <nav class="nav" aria-label="Điều hướng chính">
+      <a href="#tis">True Input System</a>
+      <a href="#bsw">Blender-Style Workflow</a>
+      <a href="#start">Cài đặt</a>
+      <a class="nav-repo" data-repo hidden href="#">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Công cụ cho Unity 6</p>
+    <h1>Viết input một lần.<br>Làm việc trong Unity nhanh như trong Blender.</h1>
+    <p class="lede">Hai package do GaMo Tools phát triển. Một bộ lo phần điều khiển của game trên mọi thiết bị, một bộ đưa thói quen dựng hình và rigging của Blender vào Unity Editor.</p>
+
+    <div class="products">
+      <a class="product tis" href="#tis">
+        <img src="assets/icons/GamepadButton.png" alt="" width="40" height="40">
+        <h2>True Input System</h2>
+        <p>Một API duy nhất cho chuột và bàn phím, tay cầm, màn hình cảm ứng. Script của bạn không cần <code>if/else</code> theo nền tảng.</p>
+        <dl class="mini-stats">
+          <div><dt>38</dt><dd>bài học tương tác</dd></div>
+          <div><dt>3</dt><dd>kiểu điều khiển</dd></div>
+          <div><dt>35</dt><dd>script demo</dd></div>
+        </dl>
+        <span class="go">Xem chi tiết <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="product bsw" href="#bsw">
+        <img src="assets/icons/IKConstraint.png" alt="" width="40" height="40">
+        <h2>Blender-Style Workflow</h2>
+        <p>Phím G/R/S, pie menu, constraint kiểu Blender, Dynamic Bone chạy Burst, cùng GM-Inspector và công cụ gộp mesh.</p>
+        <dl class="mini-stats">
+          <div><dt>4</dt><dd>pie menu</dd></div>
+          <div><dt>4</dt><dd>loại constraint</dd></div>
+          <div><dt>5</dt><dd>Burst job cho Dynamic Bone</dd></div>
+        </dl>
+        <span class="go">Xem chi tiết <span aria-hidden="true">→</span></span>
+      </a>
+    </div>
+    <p class="note">Các sơ đồ và demo trên trang được dựng lại từ logic thật của package để giải thích cách hoạt động. Đây không phải ảnh chụp Unity Editor.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ TRUE INPUT SYSTEM ═══════════════ -->
+<section class="product-head tis" id="tis">
+  <div class="wrap">
+    <p class="eyebrow">True Input System <span class="ver">v1.0.7</span></p>
+    <h2>Một đoạn code, chạy trên mọi thiết bị</h2>
+    <p class="lede">Script của bạn chỉ nói chuyện với <code>TISInputBridge.Instance</code>, không bao giờ đọc thẳng <code>InputAction</code>. Bridge lo phần còn lại: dựng action từ profile, nhận biết thiết bị đang dùng và nhận input từ nút ảo trên màn hình.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap split">
+    <div>
+      <h3>Luồng dữ liệu</h3>
+      <p>Profile là một ScriptableObject khai báo action và binding. Từ profile, bridge dựng <code>InputActionAsset</code> lúc chạy. PC và tay cầm đi qua InputAction, còn UI cảm ứng ghi trực tiếp vào registry. Cả hai nhánh gặp nhau tại cùng một API.</p>
+      <ul class="ticks">
+        <li>Không cần gán tham chiếu trong Inspector, bridge là singleton tự tìm</li>
+        <li>Đổi cả bộ điều khiển lúc chạy bằng <code>SwapProfile</code>, ví dụ đi bộ sang lái xe</li>
+        <li>Code game có thể phụ thuộc vào interface <code>ITISInputBridge</code> để mock input khi viết unit test</li>
+      </ul>
+    </div>
+    <figure class="fig">
+      <svg viewBox="0 0 560 400" role="img" aria-label="Sơ đồ: Profile vào TISInputBridge, chia hai nhánh PC, tay cầm và UI cảm ứng, rồi cùng tới script của bạn">
+        <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#8d8d8d"/></marker></defs>
+        <g class="dg-box"><rect x="150" y="8" width="260" height="58" rx="8"/><text x="280" y="33" class="dg-t">TISInputProfileConfig</text><text x="280" y="52" class="dg-s">ScriptableObject: action và binding</text></g>
+        <path class="dg-l" d="M280 66V96"/>
+        <g class="dg-box hi"><rect x="150" y="98" width="260" height="58" rx="8"/><text x="280" y="123" class="dg-t">TISInputBridge</text><text x="280" y="142" class="dg-s">Singleton: dựng asset, cung cấp API</text></g>
+        <path class="dg-l" d="M220 156 130 200"/><path class="dg-l" d="M340 156 430 200"/>
+        <g class="dg-box"><rect x="10" y="202" width="240" height="84" rx="8"/><text x="130" y="226" class="dg-t">PC và tay cầm</text><text x="130" y="248" class="dg-s">InputAction dựng sẵn</text><text x="130" y="267" class="dg-s">gyro, touchpad qua &lt;TISMotion&gt;</text></g>
+        <g class="dg-box"><rect x="310" y="202" width="240" height="84" rx="8"/><text x="430" y="226" class="dg-t">UI cảm ứng</text><text x="430" y="248" class="dg-s">Joystick, nút kỹ năng, vùng camera</text><text x="430" y="267" class="dg-s">ghi vào registry / Override…Input</text></g>
+        <path class="dg-l" d="M130 286 230 326"/><path class="dg-l" d="M430 286 330 326"/>
+        <g class="dg-box hi"><rect x="100" y="328" width="360" height="64" rx="8"/><text x="280" y="353" class="dg-t">Script của bạn</text><text x="280" y="376" class="dg-c">MoveDirection · LookDelta · GetSkillAction()</text></g>
+      </svg>
+    </figure>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap split">
+    <div>
+      <h3>Thử ngay: cùng một giá trị từ ba thiết bị</h3>
+      <p>Bấm vào khung rồi dùng <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd>, kéo joystick ảo, hoặc cắm tay cầm và gạt cần trái. Nhân vật chỉ đọc một giá trị <code>MoveDirection</code>, không cần biết nó đến từ đâu.</p>
+      <pre class="code"><code><span class="k">using</span> GaMo.TrueInputSystem;
+
+<span class="k">var</span> input = TISInputBridge.Instance;
+
+<span class="c">// Giống hệt nhau trên PC, tay cầm và mobile</span>
+Vector2 move = input.MoveDirection;
+Vector2 look = input.LookDelta;
+
+<span class="k">if</span> (input.IsJumping) Jump();
+<span class="k">if</span> (input.GetSkillAction(<span class="s">"Skill_1"</span>)) CastFireball();
+
+<span class="c">// Rung nhẹ khi trúng đòn, profile tắt rung thì tự bỏ qua</span>
+input.TryRumble(<span class="n">0.6f</span>, <span class="n">0.3f</span>, <span class="n">0.15f</span>);</code></pre>
+    </div>
+    <figure class="fig demo">
+      <div class="move-stage" id="moveStage" tabindex="0" aria-label="Khung thử di chuyển. Dùng phím W A S D hoặc kéo joystick ảo.">
+        <div class="player" id="player"></div>
+        <div class="vjoy" id="vjoy"><div class="vjoy-knob" id="vjoyKnob"></div></div>
+      </div>
+      <dl class="readout">
+        <div><dt>MoveDirection</dt><dd id="roMove">(0.00, 0.00)</dd></div>
+        <div><dt>ActiveDevice</dt><dd id="roDevice">KeyboardMouse</dd></div>
+      </dl>
+    </figure>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h3 class="center">Có sẵn những thứ game nào cũng phải tự viết</h3>
+    <div class="cards">
+      <article class="card"><img src="assets/icons/mobileinput.png" alt="" width="32" height="32"><h4>Điều khiển cảm ứng</h4><p>Joystick ảo hiện tại điểm chạm, nút kỹ năng có hồi chiêu, vùng vuốt camera và chụm ngón zoom. Pinch và xoay camera không tranh nhau.</p></article>
+      <article class="card"><img src="assets/icons/directionbuttton.png" alt="" width="32" height="32"><h4>Nút kỹ năng kiểu MOBA</h4><p>Kéo chọn hướng, nhả tay để tung chiêu, có vùng hủy và tap nhanh để tự chọn mục tiêu.</p></article>
+      <article class="card"><img src="assets/icons/UIbuttongamepadmanager.png" alt="" width="32" height="32"><h4>Điều hướng UI bằng tay cầm</h4><p>Ba lớp Tab, SubTab, Content. Nhóm nút tự tính hướng đi theo bố cục, kèm con trỏ ảo bằng cần analog.</p></article>
+      <article class="card"><img src="assets/icons/targetDetec.png" alt="" width="32" height="32"><h4>Aim assist</h4><p><code>TISTargetScanner</code> khóa mục tiêu gần tâm màn hình, <code>AimAssistProcess</code> hút camera về đó. Chọn được nền tảng áp dụng.</p></article>
+      <article class="card"><img src="assets/icons/gamepadmouse.png" alt="" width="32" height="32"><h4>Gyro và touchpad</h4><p>Đọc qua SDL3 trên PC cho DualShock 4, DualSense, Switch Pro. Bật tắt ở ba mức: toàn game, profile, từng action.</p></article>
+      <article class="card"><img src="assets/icons/Profile.png" alt="" width="32" height="32"><h4>Đổi phím có lưu</h4><p><code>TISRebindingSystem</code> đổi phím tương tác hoặc bằng code, tự lưu JSON sau mỗi lần đổi, khôi phục từng phím hoặc tất cả.</p></article>
+      <article class="card"><img src="assets/icons/button.png" alt="" width="32" height="32"><h4>Đọc nút linh hoạt</h4><p>Ba chế độ nhấn, giữ, nhả. Có input buffer, tổ hợp phím, Action Map bật tắt theo ngữ cảnh và ghi đè input khi cần.</p></article>
+      <article class="card"><img src="assets/icons/GamepadButton.png" alt="" width="32" height="32"><h4>Setup Tool trực quan</h4><p>Cửa sổ ba cột cho Action Map, binding và cài đặt nền tảng. Validate báo tên trùng và xung đột binding trước khi Generate.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap split">
+    <div>
+      <h3>Thử ngay: nút kỹ năng định hướng</h3>
+      <p>Đây là cách <code>TISDirectionalSkillButton</code> ở chế độ <code>DragRelease</code> quyết định một lần chạm. Nhấn giữ nút rồi kéo.</p>
+      <ul class="ticks">
+        <li>Kéo quá 20 px (mặc định) rồi nhả: tung chiêu theo hướng kéo</li>
+        <li>Tap nhanh: tung chiêu với hướng zero, dùng cho tự chọn mục tiêu</li>
+        <li>Nhả trong vùng hủy: bỏ chiêu</li>
+        <li>Kéo chưa đủ xa và giữ lâu: không tung chiêu</li>
+      </ul>
+      <p class="muted">Sự kiện trả về: <code id="skillLog">chưa có lần chạm nào</code></p>
+    </div>
+    <figure class="fig demo">
+      <div class="skill-stage" id="skillStage">
+        <div class="cancel" id="skillCancel">Hủy</div>
+        <svg class="skill-aim" id="skillAim" aria-hidden="true"><line id="skillLine" x1="0" y1="0" x2="0" y2="0"/></svg>
+        <div class="range" id="skillRange"></div>
+        <button class="skill-btn" id="skillBtn" aria-label="Nút kỹ năng, nhấn giữ rồi kéo">Skill</button>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap split rev">
+    <div>
+      <h3>Menu dùng tay cầm mà không phải tự nối từng nút</h3>
+      <p>Ba lớp có phím riêng nên người chơi không bị lạc. Gắn <code>TISGamepadUIButton</code> lên nút, <code>TISGamepadUIButtonGroup</code> lên cha, và <code>RebuildNavigation()</code> tính hướng lên, xuống, trái, phải theo bố cục.</p>
+      <ul class="ticks">
+        <li>Hoạt động với layout dọc, ngang và lưới</li>
+        <li>Cần chọn tự do thì bật con trỏ ảo, hoạt động như chuột thật</li>
+      </ul>
+    </div>
+    <figure class="fig">
+      <svg viewBox="0 0 560 300" role="img" aria-label="Ba lớp điều hướng: LT RT đổi Tab, LB RB đổi SubTab, D-Pad hoặc cần analog chọn nội dung">
+        <rect x="8" y="8" width="544" height="284" rx="10" class="dg-panel"/>
+        <g class="dg-tab"><rect x="24" y="24" width="120" height="38" rx="6" class="on"/><text x="84" y="48">Hành trang</text><rect x="152" y="24" width="120" height="38" rx="6"/><text x="212" y="48">Kỹ năng</text><rect x="280" y="24" width="120" height="38" rx="6"/><text x="340" y="48">Cài đặt</text></g>
+        <text x="536" y="48" class="dg-k" text-anchor="end">LT / RT</text>
+        <g class="dg-tab sub"><rect x="24" y="74" width="100" height="30" rx="5" class="on"/><text x="74" y="94">Vũ khí</text><rect x="132" y="74" width="100" height="30" rx="5"/><text x="182" y="94">Giáp</text><rect x="240" y="74" width="100" height="30" rx="5"/><text x="290" y="94">Vật phẩm</text></g>
+        <text x="536" y="94" class="dg-k" text-anchor="end">LB / RB</text>
+        <g class="dg-grid"><rect x="24" y="118" width="96" height="74" rx="6"/><rect x="128" y="118" width="96" height="74" rx="6" class="on"/><rect x="232" y="118" width="96" height="74" rx="6"/><rect x="336" y="118" width="96" height="74" rx="6"/><rect x="24" y="200" width="96" height="74" rx="6"/><rect x="128" y="200" width="96" height="74" rx="6"/><rect x="232" y="200" width="96" height="74" rx="6"/><rect x="336" y="200" width="96" height="74" rx="6"/></g>
+        <text x="536" y="200" class="dg-k" text-anchor="end">D-Pad</text>
+        <text x="536" y="220" class="dg-k" text-anchor="end">hoặc cần</text>
+      </svg>
+    </figure>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap">
+    <h3 class="center">Học bằng cách chơi, ngay trong Unity</h3>
+    <p class="center lede-s">Ba scene hướng dẫn có sẵn. Mỗi bài có mô tả, các bước setup, code mẫu sao chép được, bảng API cập nhật theo thời gian thực và nhiệm vụ trên sân chơi 3D tự tích khi bạn làm xong.</p>
+    <div class="lessons">
+      <div class="lesson"><strong>15 bài</strong><span>Chuột + Bàn phím</span><small>Di chuyển, input buffer, Action Map, đổi profile, đổi phím, mini-game săn sao</small></div>
+      <div class="lesson"><strong>12 bài</strong><span>Tay cầm</span><small>Deadzone, rung, aim assist, menu, con trỏ ảo, gyro, touchpad</small></div>
+      <div class="lesson"><strong>11 bài</strong><span>Mobile</span><small>Joystick ảo, nút kỹ năng, hồi chiêu, MOBA, cử chỉ nhiều ngón</small></div>
+    </div>
+    <p class="center muted">Kèm cửa sổ Documentation tiếng Việt trong Editor: API, code mẫu, FAQ và tìm kiếm.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ BLENDER-STYLE WORKFLOW ═══════════════ -->
+<section class="product-head bsw" id="bsw">
+  <div class="wrap">
+    <p class="eyebrow">Blender-Style Workflow</p>
+    <h2>Unity Editor, theo cách tay bạn đã quen</h2>
+    <p class="lede">Bộ công cụ cho người làm 3D và rigging: thao tác bằng phím thay vì kéo gizmo, constraint chạy đúng thứ tự, và một Inspector làm được nhiều việc hơn. Từng tính năng bật riêng, nên bạn chỉ dùng phần mình cần.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap split">
+    <div>
+      <h3>Thử ngay: G, R, S trong Scene view</h3>
+      <p>Bấm vào khung, rồi nhấn <kbd>G</kbd> và rê chuột. Khối đi theo chuột mà không cần nhắm vào gizmo. Demo này cần bàn phím.</p>
+      <table class="keys">
+        <tr><td><kbd>G</kbd> <kbd>R</kbd> <kbd>S</kbd></td><td>Di chuyển, xoay, co giãn</td></tr>
+        <tr><td><kbd>X</kbd> <kbd>Y</kbd> <kbd>Z</kbd></td><td>Khóa theo trục</td></tr>
+        <tr><td><kbd>Shift</kbd> + trục</td><td>Khóa theo mặt phẳng</td></tr>
+        <tr><td>Gõ số</td><td>Nhập giá trị chính xác</td></tr>
+        <tr><td><kbd>Shift</kbd> khi kéo</td><td>Giảm tốc còn 20%, chỉnh được</td></tr>
+        <tr><td><kbd>Enter</kbd> / chuột trái</td><td>Xác nhận</td></tr>
+        <tr><td><kbd>Esc</kbd> / chuột phải</td><td>Hủy, trả về vị trí cũ</td></tr>
+      </table>
+      <p class="muted">Điều hướng cũng theo Blender: chuột giữa để orbit, Shift + chuột giữa để pan. Phím tắt tự nhường khi bạn đang dùng Terrain tool.</p>
+    </div>
+    <figure class="fig demo">
+      <div class="grs-stage" id="grsStage" tabindex="0" aria-label="Khung thử phím G R S. Bấm vào khung rồi nhấn G, R hoặc S.">
+        <div class="grs-axis x"></div><div class="grs-axis y"></div>
+        <div class="grs-box" id="grsBox"></div>
+        <div class="grs-hud" id="grsHud">Bấm vào đây rồi nhấn G, R hoặc S</div>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap split rev">
+    <div>
+      <h3>Thử ngay: pie menu</h3>
+      <p>Rê chuột vào hướng muốn chọn. Trong Unity, bạn giữ phím tắt, lia chuột rồi thả tay. Nhấn thả nhanh thì menu ở lại để click, hoặc chọn bằng phím số.</p>
+      <div class="tabs" role="tablist" aria-label="Chọn pie menu" id="pieTabs">
+        <button role="tab" aria-selected="true" data-pie="create">Create Object</button>
+        <button role="tab" aria-selected="false" data-pie="view">View Axis</button>
+        <button role="tab" aria-selected="false" data-pie="copy">Copy Transform</button>
+      </div>
+      <p id="pieDesc"></p>
+      <p class="muted">Phím tắt, bán kính, cỡ chữ và hiệu ứng đều chỉnh được trong cửa sổ cài đặt. Copy và Paste dùng chung một phím: gõ thêm một lần để chuyển qua lại ngay tại chỗ.</p>
+    </div>
+    <figure class="fig demo">
+      <svg id="pie" viewBox="-200 -200 400 400" role="img" aria-label="Pie menu tương tác"></svg>
+    </figure>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap split">
+    <div>
+      <h3>Nhiều hệ thống, không giành phím của nhau</h3>
+      <p>Mọi công cụ trong Scene view đều hỏi chung một trọng tài là <code>BlenderInputPriority</code>. Mỗi hệ thống chỉ được xử lý sự kiện khi không có hệ thống ưu tiên cao hơn đang chạy. Nhờ vậy orbit không cướp chuột giữa khi pie menu đang mở, và phiên G/R/S không kẹt lại.</p>
+    </div>
+    <figure class="fig">
+      <ol class="prio">
+        <li><b>1</b><span>Pie Menu</span><small>Đang mở</small></li>
+        <li><b>2</b><span>Transform Session</span><small>G / R / S</small></li>
+        <li><b>3</b><span>Gizmo Drag</span><small>Kéo gizmo</small></li>
+        <li><b>4</b><span>Bone Picking</span><small>Chọn xương</small></li>
+        <li><b>5</b><span>Scene Navigation</span><small>Orbit, pan, zoom</small></li>
+      </ol>
+    </figure>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap">
+    <h3 class="center">Constraint kiểu Blender cho nhân vật</h3>
+    <div class="cards c4">
+      <article class="card"><img src="assets/icons/IKConstraint.png" alt="" width="32" height="32"><h4>IK Constraint</h4><p>Nhiều target và pole target, hòa trộn theo weight, đổi tay cầm súng bằng <code>SwitchTarget</code>.</p></article>
+      <article class="card"><img src="assets/icons/DampeTrack.png" alt="" width="32" height="32"><h4>Damped Track</h4><p>Quay theo cung ngắn nhất, không cần Up Axis nên tránh gimbal và lật đột ngột.</p></article>
+      <article class="card"><img src="assets/icons/DampeTrackChain.png" alt="" width="32" height="32"><h4>Damped Track Chain</h4><p>Cả chuỗi xương cùng nhìn mục tiêu, có giới hạn góc, kiểm tra vật cản và tự chọn mục tiêu.</p></article>
+      <article class="card"><img src="assets/icons/CopyTransform.png" alt="" width="32" height="32"><h4>Transform Constraint</h4><p>Bắt chước vị trí và góc xoay, chế độ Delta hoặc Absolute, World hoặc Local, nhiều target.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap split">
+    <div>
+      <h3>Thử ngay: phần góc dư chảy xuống chuỗi xương</h3>
+      <p>Kéo thanh trượt để đổi hướng nhìn. Đầu xoay trước tới giới hạn, phần còn thiếu chuyển xuống cổ, rồi tới ngực và hông. Nhờ đó nhân vật quay người tự nhiên, không bẻ cổ quá mức.</p>
+      <label class="slider">Góc cần nhìn: <output id="chainOut">0°</output>
+        <input type="range" id="chainAngle" min="-140" max="140" value="60">
+      </label>
+      <p class="muted">Các số trong demo chỉ để minh họa. Trong Unity, giới hạn đặt riêng cho từng xương. Chế độ Weighted chia góc theo tỉ lệ thay vì ưu tiên đầu.</p>
+    </div>
+    <figure class="fig demo"><svg id="chain" viewBox="-200 -30 400 320" role="img" aria-label="Chuỗi bốn xương xoay theo góc nhìn"></svg></figure>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap">
+    <h3 class="center">Chạy đúng thứ tự trong một frame</h3>
+    <p class="center lede-s">Constraint không tự chạy <code>LateUpdate</code> riêng. <code>ConstraintScheduler</code> dựng đồ thị phụ thuộc, nên constraint đọc Transform do constraint khác ghi luôn chạy sau, không còn trễ một frame. Vật lý tóc và vải chạy cuối để đọc đúng pose.</p>
+    <figure class="fig wide">
+      <svg viewBox="0 0 960 250" role="img" aria-label="Thứ tự trong frame: sắp xếp phụ thuộc, bốn loại constraint, rồi Dynamic Bone với chuỗi job Burst">
+        <defs><marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#8d8d8d"/></marker></defs>
+        <text x="16" y="24" class="dg-h">ConstraintScheduler, một LateUpdate duy nhất</text>
+        <g class="dg-box"><rect x="16" y="38" width="150" height="70" rx="8"/><text x="91" y="66" class="dg-t">Sắp xếp</text><text x="91" y="88" class="dg-s">chỉ khi có thay đổi</text></g>
+        <g class="dg-box"><rect x="196" y="38" width="130" height="70" rx="8"/><text x="261" y="66" class="dg-t">Track Chain</text><text x="261" y="88" class="dg-s">thứ tự 100</text></g>
+        <g class="dg-box"><rect x="346" y="38" width="130" height="70" rx="8"/><text x="411" y="66" class="dg-t">Damped Track</text><text x="411" y="88" class="dg-s">thứ tự 200</text></g>
+        <g class="dg-box"><rect x="496" y="38" width="130" height="70" rx="8"/><text x="561" y="66" class="dg-t">Transform</text><text x="561" y="88" class="dg-s">thứ tự 300</text></g>
+        <g class="dg-box"><rect x="646" y="38" width="130" height="70" rx="8"/><text x="711" y="66" class="dg-t">IK</text><text x="711" y="88" class="dg-s">thứ tự 400</text></g>
+        <g class="dg-box hi2"><rect x="806" y="38" width="138" height="70" rx="8"/><text x="875" y="66" class="dg-t">Dynamic Bone</text><text x="875" y="88" class="dg-s">luôn cuối cùng</text></g>
+        <path class="dg-l2" d="M166 73h28M326 73h18M476 73h18M626 73h18M776 73h28"/>
+        <path class="dg-l2" d="M875 108V122H101V150"/>
+        <text x="120" y="140" class="dg-h">Chuỗi job Burst, gộp mọi nhân vật</text>
+        <g class="dg-box"><rect x="16" y="150" width="170" height="70" rx="8"/><text x="101" y="178" class="dg-t">Đọc transform</text><text x="101" y="200" class="dg-s">song song</text></g>
+        <g class="dg-box"><rect x="206" y="150" width="170" height="70" rx="8"/><text x="291" y="178" class="dg-t">Gom collider</text><text x="291" y="200" class="dg-s">song song</text></g>
+        <g class="dg-box"><rect x="396" y="150" width="170" height="70" rx="8"/><text x="481" y="178" class="dg-t">Mô phỏng chain</text><text x="481" y="200" class="dg-s">song song theo chain</text></g>
+        <g class="dg-box"><rect x="586" y="150" width="170" height="70" rx="8"/><text x="671" y="178" class="dg-t">Ghi rotation</text><text x="671" y="200" class="dg-s">vào Transform</text></g>
+        <g class="dg-box"><rect x="776" y="150" width="168" height="70" rx="8"/><text x="860" y="178" class="dg-t">Cache anchor</text><text x="860" y="200" class="dg-s">của collider</text></g>
+        <path class="dg-l2" d="M186 185h18M376 185h18M566 185h18M756 185h18"/>
+      </svg>
+    </figure>
+    <div class="cards c3">
+      <article class="card"><img src="assets/icons/spring.png" alt="" width="32" height="32"><h4>Dynamic Bone</h4><p>Tóc, đuôi, áo có vật lý. Mọi nhân vật gộp vào một manager để Job System chia việc cho các luồng.</p></article>
+      <article class="card"><img src="assets/icons/DynamicBoneCollider.png" alt="" width="32" height="32"><h4>Collider dùng chung</h4><p>Sphere, Capsule, Plane, Box. Capsule có thể thuôn đầu, Box có thể vát. Một collider cản được nhiều chuỗi và hiện gizmo ngay tại xương.</p></article>
+      <article class="card"><img src="assets/icons/Event.png" alt="" width="32" height="32"><h4>Motion Time Event</h4><p>Gọi sự kiện theo thời gian trong Animator State, theo giây hoặc tỉ lệ, có thể kèm int, float, string, Vector, Color, enum hoặc Object.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap split rev">
+    <div>
+      <h3>GM-Inspector: sửa asset ngay tại chỗ</h3>
+      <p>Một Inspector thay thế, có thanh tab component nên không phải cuộn qua danh sách dài. Chọn asset là có thể sửa luôn, không cần mở phần mềm khác cho những việc nhỏ.</p>
+      <ul class="ticks">
+        <li><b>Audio:</b> waveform, cắt, EQ, pitch, reverb, fade, rồi lưu WAV</li>
+        <li><b>Mesh:</b> đặt lại pivot, bake rotation, flip normal, tính lại normal và tangent</li>
+        <li><b>Animation:</b> cắt clip theo frame, clip trong FBX không bị phá file gốc</li>
+        <li><b>Collider:</b> Fit to Target bọc theo mesh, kể cả khi collider xoay hoặc co giãn</li>
+        <li><b>FBX:</b> sửa từng mesh rồi xuất FBX mới qua FBX Exporter của Unity</li>
+        <li>Ghim màu tab, kéo đổi thứ tự component, lịch sử chọn Back/Forward</li>
+      </ul>
+    </div>
+    <figure class="fig">
+      <div class="insp" role="img" aria-label="Minh họa GM-Inspector với thanh tab component và bảng chỉnh audio">
+        <div class="insp-bar"><span class="dot"></span><strong>Character_Voice</strong><span class="insp-tag">AudioClip</span></div>
+        <div class="insp-tabs"><span class="pin-a">Transform</span><span class="on">Audio Source</span><span class="pin-b">Dynamic Bone</span><span>IK</span><span>+</span></div>
+        <div class="insp-sec">Edit Audio</div>
+        <svg class="wave" id="wave" viewBox="0 0 400 90" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <div class="insp-btns"><span>Trim</span><span>Delete</span><span>Reverse</span><span>Mono</span></div>
+        <div class="insp-row"><label>Bass</label><i style="--v:62%"></i></div>
+        <div class="insp-row"><label>Treble</label><i style="--v:38%"></i></div>
+        <div class="insp-row"><label>Reverb</label><i style="--v:24%"></i></div>
+        <div class="insp-btns end"><span>Save As</span><span class="pri">Overwrite</span></div>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap split">
+    <div>
+      <h3>Mesh &amp; Atlas Combiner: giảm draw call theo hai cách</h3>
+      <p><b>Atlas</b> gộp mọi mesh đã chọn vào một mesh và một atlas texture, hỗ trợ LODGroup. <b>Grid</b> chia map thành ô, gộp mesh Static cùng material trong từng ô, nên giữ nguyên material gốc và culling vẫn hoạt động.</p>
+      <ul class="ticks">
+        <li>Grid chép collider gốc sang object đã gộp</li>
+        <li>Tùy chọn nén vertex, tool ước tính giảm khoảng 40–50% dung lượng mesh</li>
+        <li>Tắt object gốc thay vì xóa, nên quay lại được</li>
+      </ul>
+    </div>
+    <figure class="fig">
+      <svg viewBox="0 0 560 280" role="img" aria-label="So sánh Atlas gộp tất cả thành một, Grid gộp theo ô và material">
+        <text x="140" y="24" class="dg-h mid">Atlas: gộp tất cả</text>
+        <text x="420" y="24" class="dg-h mid">Grid: theo ô + material</text>
+        <g class="cmb a"><rect x="30" y="40" width="50" height="50"/><rect x="88" y="40" width="50" height="50" class="b"/><rect x="146" y="40" width="50" height="50" class="c"/><rect x="204" y="40" width="50" height="50" class="d"/></g>
+        <path class="dg-l" d="M140 98v32"/>
+        <rect x="60" y="134" width="160" height="130" rx="4" class="cmb-m"/>
+        <g class="cmb a"><rect x="66" y="140" width="72" height="56"/><rect x="142" y="140" width="72" height="56" class="b"/><rect x="66" y="200" width="72" height="58" class="c"/><rect x="142" y="200" width="72" height="58" class="d"/></g>
+        <text x="140" y="276" class="dg-s" text-anchor="middle">1 mesh, 1 material</text>
+        <g class="grid-l"><path d="M300 44h240v220H300zM380 44v220M460 44v220M300 117h240M300 190h240"/></g>
+        <g class="cmb a"><rect x="310" y="54" width="60" height="26"/><rect x="310" y="84" width="60" height="24" class="b"/><rect x="390" y="54" width="60" height="54"/><rect x="470" y="54" width="60" height="54" class="c"/><rect x="310" y="127" width="60" height="54" class="c"/><rect x="390" y="127" width="60" height="26" class="b"/><rect x="390" y="157" width="60" height="24" class="d"/><rect x="470" y="127" width="60" height="54"/><rect x="310" y="200" width="60" height="54" class="d"/><rect x="390" y="200" width="60" height="54"/><rect x="470" y="200" width="60" height="54" class="b"/></g>
+        <text x="420" y="276" class="dg-s" text-anchor="middle">mỗi ô, mỗi material là 1 mesh</text>
+      </svg>
+    </figure>
+  </div>
+</section>
+
+<!-- ═══════════════ START ═══════════════ -->
+<section class="block" id="start">
+  <div class="wrap">
+    <h2 class="center">Bắt đầu</h2>
+    <div class="starts">
+      <article class="start tis">
+        <h3>True Input System</h3>
+        <ol>
+          <li>Mở <code>Tools › GaMo ToolKit › True Input System › Setup</code>, tạo profile và khai báo action.</li>
+          <li>Trong Hierarchy, chuột phải <code>GaMo ToolKit › True Input System › TIS Setup</code>, rồi kéo profile vào Inspector.</li>
+          <li>Lấy <code>TISInputBridge.Instance</code> trong <code>Start()</code> và đọc input trong <code>Update()</code>.</li>
+        </ol>
+        <h4>Yêu cầu</h4>
+        <ul class="req">
+          <li>Unity 6000.3 trở lên</li>
+          <li>Input System 1.11.0 trở lên</li>
+          <li>TextMeshPro</li>
+          <li>Gyro và touchpad trên PC cần Windows 64-bit và tay cầm hỗ trợ. Tay cầm chỉ chạy XInput không có gyro.</li>
+        </ul>
+      </article>
+      <article class="start bsw">
+        <h3>Blender-Style Workflow</h3>
+        <ol>
+          <li>Chép thư mục <code>Blender-Style Workflow</code> vào <code>Assets</code>.</li>
+          <li>Mở <code>Tools › GaMo ToolKit › Blender Style Workflow › Setting Windown</code>.</li>
+          <li>Bật tính năng bạn muốn. Tất cả đều <strong>tắt sẵn</strong> để không đổi phím quen thuộc của bạn.</li>
+        </ol>
+        <h4>Yêu cầu</h4>
+        <ul class="req">
+          <li>Unity 6</li>
+          <li>Burst, Collections, Mathematics cho Dynamic Bone</li>
+          <li>FBX Exporter nếu xuất FBX, tool có nút cài</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span>© GaMo Tools</span>
+    <span>Liên hệ: <a href="mailto:support@gamotools.com">support@gamotools.com</a></span>
+    <span class="muted">Font Be Vietnam Pro và JetBrains Mono theo giấy phép SIL OFL. Unity và Blender là thương hiệu của chủ sở hữu tương ứng.</span>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
